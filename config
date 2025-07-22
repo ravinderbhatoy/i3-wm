@@ -1,7 +1,15 @@
+# install following ones
+# xclip (copy to clipboard for nvim)
+# picom (transparent windows)
 
 # mod key (window)
 set $mod Mod4
 
+# keyboard key repeat rate
+exec --no-startup-id xset r rate 250 30
+
+# mouse sensitivity
+# exec --no-startup-id xinput --set-prop 16 'libinput Accel Speed' -0.65
 
 # autotiling
 exec_always --no-startup-id autotiling
@@ -12,7 +20,8 @@ exec_always --no-startup-id autotiling
     bindsym XF86MonBrightnessDown exec brightnessctl -c backlight set 3%-
 #
 
-exec --no-startup-id polybar
+exec_always --no-startup-id polybar -r
+# exec_always --no-startup-id sleep 1 && ~/.config/polybar/launch.sh
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
@@ -56,14 +65,16 @@ tiling_drag modifier titlebar
 bindsym $mod+Return exec kitty
 
 # set wallpaper
-exec --no-startup-id feh --bg-scale ~/Downloads/wallpapers-bank/deep-blue.jpg
+# exec --no-startup-id feh --bg-scale ~/Downloads/wallpapers-bank/bg_17.jpg
+# set wallpaper-scheme
+exec --no-startup-id wal -i ~/Downloads/wallpapers-bank/debian-lavender.jpg
 
 # kill focused window
 bindsym $mod+q kill
 
 # start dmenu (a program launcher)
-# bindsym $mod+d exec --no-startup-id rofi -show combi
-bindsym $mod+d exec --no-startup-id dmenu_run
+bindsym $mod+d exec --no-startup-id rofi -show combi
+# bindsym $mod+d exec --no-startup-id dmenu_run
 # A more modern dmenu replacement is rofi:
 # bindcode $mod+40 exec "rofi -modi drun,run -show drun"
 # There also is i3-dmenu-desktop which only displays applications shipping a
@@ -99,14 +110,13 @@ bindsym $mod+Shift+Right move right
 
 # split in vertical orientation
 bindsym $mod+v split v
-
 # enter fullscreen mode for the focused container
 bindsym $mod+f fullscreen toggle
 
 # change container layout (stacked, tabbed, toggle split)
 bindsym $mod+s layout stacking
-# bindsym $mod+w layout tabbed
-bindsym $mod+w focus parent; layout tabbed
+bindsym $mod+w layout tabbed
+# bindsym $mod+w focus parent; layout tabbed
 bindsym $mod+e layout toggle split
 
 # toggle tiling / floating
@@ -173,10 +183,10 @@ mode "resize" {
         # Pressing right will grow the window’s width.
         # Pressing up will shrink the window’s height.
         # Pressing down will grow the window’s height.
-        bindsym j resize shrink width 10 px or 10 ppt
+        bindsym j resize shrink height 10 px or 10 ppt
         bindsym k resize grow height 10 px or 10 ppt
-        bindsym l resize shrink height 10 px or 10 ppt
-        bindsym semicolon resize grow width 10 px or 10 ppt
+        bindsym h resize grow width 10 px or 10 ppt
+        bindsym semicolon resize shrink width 10 px or 10 ppt
 
         # same bindings, but for the arrow keys
         bindsym Left resize shrink width 10 px or 10 ppt
@@ -193,7 +203,7 @@ mode "resize" {
 bindsym $mod+r mode "resize"
 set $bell 0
 
-gaps inner 8 
+gaps inner 10 
 gaps outer 0 
 smart_gaps off
 
@@ -241,6 +251,6 @@ client.urgent            $peach    $base  $peach   $overlay0  $peach
 client.placeholder       $overlay0 $base  $text    $overlay0  $overlay0
 client.background        $base
 
-default_border pixel 2
-default_floating_border pixel 2
+default_border pixel 1
+default_floating_border pixel 1
 
