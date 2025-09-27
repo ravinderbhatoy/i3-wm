@@ -1,14 +1,13 @@
 # install following ones
 # xclip (copy to clipboard for nvim)
 # picom (transparent windows)
-# piwal for colors
 
 
 # mod key (window)
 set $mod Mod4
 
-# keyboard key repeat rate
-exec --no-startup-id xset r rate 550 30
+# keyboard key repeat rate       (delay) (speed)
+exec --no-startup-id xset r rate 550 20
 
 # mouse sensitivity
 # exec --no-startup-id xinput --set-prop 16 'libinput Accel Speed' -0.65
@@ -18,6 +17,8 @@ exec --no-startup-id xset r rate 550 30
 #
     bindsym XF86MonBrightnessUp exec brightnessctl -c backlight set +3%
     bindsym XF86MonBrightnessDown exec brightnessctl -c backlight set 3%-
+    bindsym Print exec flameshot gui
+
 #
 
 # Font
@@ -211,14 +212,14 @@ default_border pixel 2
 # from the generated scheme.
 # NOTE: The '#f0f0f0' in the lines below is the color i3 will use if
 # it fails to get colors from Xresources.
-set_from_resource $fg i3wm.color7 #f0f0f0
-set_from_resource $bg i3wm.color2 #f0f0f0
+set_from_resource $bg i3wm.color5 #f0f0f0
+set_from_resource $fg i3wm.color0 #f0f0f0
 
 
 # class                 border  backgr. text indicator child_border
 client.focused          $bg     $bg     $fg  $bg       $bg
 client.focused_inactive $bg     $bg     $fg  $bg       $bg
-client.unfocused        $bg     $bg     $fg  $bg       $bg
+client.unfocused        $bg     $fg     $bg  $fg       $fg
 client.urgent           $bg     $bg     $fg  $bg       $bg
 client.placeholder      $bg     $bg     $fg  $bg       $bg
 
